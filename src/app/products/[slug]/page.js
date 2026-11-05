@@ -18,7 +18,7 @@ export default async function ProductPage({ params }) {
 
   const { nameBn, image, unit, today, yesterday, change, markets } = product;
 
-  // summary 
+ 
   const minPrice = Math.min(...markets.map((m) => m.min));
   const maxPrice = Math.max(...markets.map((m) => m.max));
 
@@ -84,7 +84,7 @@ export default async function ProductPage({ params }) {
         </div>
       </section>
 
-      {/* Summary */}
+      
       <section className="mt-5 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
         <h2 className="mb-3 font-bold text-gray-900">দামের সারসংক্ষেপ</h2>
         <div className="grid gap-3 md:grid-cols-3">
