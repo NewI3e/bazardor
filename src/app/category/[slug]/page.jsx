@@ -1,12 +1,27 @@
+import { Suspense } from "react";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getProducts, toBn } from "@/lib/products";
 import CategoryProducts from "@/components/CategoryProducts";
 
+export default function CategoryPage({ params }) {
+  return (
+    <main className="mx-auto max-w-6xl px-4 py-8">
+      <Suspense
+        fallback={
+          <div className="py-20 text-center text-sm text-gray-500">
+            বাজারের তথ্য লোড হচ্ছে...
+          </div>
+        }
+      >
+        <CategoryContent params={params} />
+      </Suspense>
+    </main>
+  );
+}
 
-
-export default async function CategoryPage({ params }) {
+async function CategoryContent({ params }) {
   const { slug } = await params;
 
   const products = await getProducts(slug);
@@ -14,11 +29,14 @@ export default async function CategoryPage({ params }) {
 
   const { categoryNameBn, categoryIcon } = products[0];
 
-  const session = await auth.api.getSession({ headers: await headers() });
-  const isLoggedIn = !!session;
+  let isLoggedIn = false;
+  try {
+    const session = await auth.api.getSession({ headers: await headers() });
+    isLoggedIn = !!session;
+  } catch {}
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8">
+    <>
       <div className="mb-6 flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
         <span className="text-5xl">{categoryIcon}</span>
         <div>
@@ -30,6 +48,6 @@ export default async function CategoryPage({ params }) {
       </div>
 
       <CategoryProducts products={products} isLoggedIn={isLoggedIn} />
-    </main>
+    </>
   );
 }
