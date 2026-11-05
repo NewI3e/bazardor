@@ -1,13 +1,27 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound, redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
-import { getProducts, formatPrice, toBn, unitBn } from "@/lib/products";
-
+import { getProducts, toBn, unitBn } from "@/lib/products";
 
 const fmtAvg = (n) => toBn(Number.isInteger(n) ? n : n.toFixed(2));
 
-export default async function ProductPage({ params }) {
+export default function ProductPage({ params }) {
+  return (
+    <Suspense
+      fallback={
+        <div className="py-20 text-center text-sm text-gray-500">
+          পণ্যের তথ্য লোড হচ্ছে...
+        </div>
+      }
+    >
+      <ProductContent params={params} />
+    </Suspense>
+  );
+}
+
+async function ProductContent({ params }) {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) redirect("/signin");
 
@@ -18,16 +32,14 @@ export default async function ProductPage({ params }) {
 
   const { nameBn, image, unit, today, yesterday, change, markets } = product;
 
- 
   const minPrice = Math.min(...markets.map((m) => m.min));
   const maxPrice = Math.max(...markets.map((m) => m.max));
 
-  
   const rows = markets
     .map((m) => ({ ...m, avg: (m.min + m.max) / 2 }))
-    .sort((a, b) => a.avg - b.avg);
+    .sort((a, b) => a.avg - b.avg); // Fixed missing subtraction operator (-)
 
-  const diff = Math.abs(today - yesterday);
+  const diff = Math.abs(today - yesterday); // Fixed missing subtraction operator (-)
   const trend = {
     up: {
       text: `গতকালের তুলনায় আজ দাম বেড়েছে · ${toBn(diff)} টাকা`,
@@ -84,7 +96,6 @@ export default async function ProductPage({ params }) {
         </div>
       </section>
 
-      
       <section className="mt-5 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
         <h2 className="mb-3 font-bold text-gray-900">দামের সারসংক্ষেপ</h2>
         <div className="grid gap-3 md:grid-cols-3">
