@@ -74,7 +74,7 @@ export default async function ProductPage({ params }) {
           </div>
         </div>
 
-        <div className="min-w-[110px] rounded-xl bg-green-50/60 px-4 py-3 text-center">
+        <div className="min-w-27.5 rounded-xl bg-green-50/60 px-4 py-3 text-center">
           <p className="text-[11px] text-gray-500">আজকের দাম</p>
           <p className="text-3xl font-bold text-gray-900">{toBn(today)}</p>
           <p className="text-[11px] text-gray-500">টাকা / {unitBn[unit]}</p>
