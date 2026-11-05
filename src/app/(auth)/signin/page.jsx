@@ -106,7 +106,7 @@ export default function SigninForm() {
           </Button>
         </Form>
 
-        {/* Divider */}
+        
         <div className="flex items-center gap-3 my-4">
           <div className="flex-1 h-px bg-gray-200"></div>
 
