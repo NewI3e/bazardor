@@ -1,11 +1,11 @@
-"use client"; // Next.js App Router হলে রাখুন
+"use client"; 
 
 import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
 const API_URL = "https://api.abcz.workers.dev/api/bazardor/products";
 
-// ইংরেজি সংখ্যা -> বাংলা সংখ্যা
+
 const toBn = (n) =>
   String(n).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]);
 
