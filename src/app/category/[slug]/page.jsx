@@ -4,7 +4,7 @@ import { auth } from "@/lib/auth";
 import { getProducts, toBn } from "@/lib/products";
 import CategoryProducts from "@/components/CategoryProducts";
 
-export const dynamic = 'force-dynamic';
+
 
 export default async function CategoryPage({ params }) {
   const { slug } = await params;
