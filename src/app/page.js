@@ -65,7 +65,7 @@ export default async function Home() {
         </div>
 
         <Image
-          src="/bazar-hero.png"   
+          src="/images/bazar-hero.png"   
           alt="বাজারের সবজি ও ফলের ঝুড়ি"
           width={420}
           height={300}
