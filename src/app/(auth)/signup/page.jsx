@@ -38,9 +38,9 @@ export default function SignupForm() {
     };
 
     const { data: resData, error } = await signUp.email({
-      email: data.email, 
-      password: data.password, 
-      name: data.name, 
+      email: data.email,
+      password: data.password,
+      name: data.name,
     });
     // console.log(resData);
     if (resData?.user.name) {
@@ -53,7 +53,14 @@ export default function SignupForm() {
     const data = await signIn.social({
       provider: "google",
     });
-    console.log(data);
+    // console.log(data);
+  };
+
+  const handleGithubSignup = async () => {
+    await signIn.social({
+      provider: "github",
+      callbackURL: "/", // where to go after login
+    });
   };
 
   return (
@@ -187,6 +194,7 @@ export default function SignupForm() {
           {/* GitHub Button */}
           <Button
             type="button"
+            onClick={handleGithubSignup}
             variant="bordered"
             className="h-9 w-full rounded-lg border border-[#e2e8e5] bg-transparent px-2 text-[11px] font-semibold text-gray-900 shadow-none hover:bg-gray-50"
           >

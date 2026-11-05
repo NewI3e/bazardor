@@ -35,12 +35,12 @@ const Marque = () => {
   }, []);
 
   if (loading) {
-    return <div className="h-[37px] bg-base-100 border-y animate-pulse" />;
+    return <div className="h-9.25 bg-base-100 border-y animate-pulse" />;
   }
   if (error || products.length === 0) return null;
 
   return (
-    <div className="border-y border-base-300 bg-base-100">
+    <div className="border-y border-base-300 bg-base-100 bg-white">
       <Marquee pauseOnHover speed={40} gradient={false}>
         {products.map((p) => {
           const up = p.change?.dir === "up";

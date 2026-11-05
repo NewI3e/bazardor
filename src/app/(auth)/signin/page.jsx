@@ -45,6 +45,12 @@ export default function SigninForm() {
     });
     console.log(data);
   };
+  const handleGithubSignup = async () => {
+    await signIn.social({
+      provider: "github",
+      callbackURL: "/", 
+    });
+  };
 
   return (
     <div className="min-h-screen bg-[#f0f5f1] flex flex-col items-center px-4 pt-8">
@@ -142,6 +148,7 @@ export default function SigninForm() {
           {/* GitHub Button */}
           <Button
             type="button"
+            onClick={handleGithubSignup}
             variant="bordered"
             className="h-9 w-full rounded-lg border border-[#e2e8e5] bg-transparent px-2 text-[11px] font-semibold text-gray-900 shadow-none hover:bg-gray-50"
           >

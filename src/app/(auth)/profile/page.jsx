@@ -15,7 +15,7 @@ function ProfileLoading() {
   );
 }
 
-// Session-dependent component
+// Session component
 async function ProfileContent() {
   const session = await auth.api.getSession({
     headers: await headers(),
