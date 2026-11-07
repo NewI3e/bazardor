@@ -37,9 +37,9 @@ async function ProductContent({ params }) {
 
   const rows = markets
     .map((m) => ({ ...m, avg: (m.min + m.max) / 2 }))
-    .sort((a, b) => a.avg - b.avg); // Fixed missing subtraction operator (-)
+    .sort((a, b) => a.avg - b.avg); 
 
-  const diff = Math.abs(today - yesterday); // Fixed missing subtraction operator (-)
+  const diff = Math.abs(today - yesterday); 
   const trend = {
     up: {
       text: `গতকালের তুলনায় আজ দাম বেড়েছে · ${toBn(diff)} টাকা`,
