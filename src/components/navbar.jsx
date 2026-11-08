@@ -92,18 +92,18 @@ const Navbar = () => {
                 />
               </div>
 
-              {/* Name & Date */}
+              
               <div>
                 <h1 className="font-bold text-lg text-gray-900">বাজার দর</h1>
 
-                {/* Date hidden on very small screens */}
-                <p className="hidden sm:block text-[12px] text-black">
+                
+                <p className="text-[10px] sm:text-[12px] text-black">
                   <TodayDate />
                 </p>
               </div>
             </Link>
 
-            {/* Right side */}
+            
             <div className="flex items-center gap-2">
               {/* Authentication */}
               {isPending ? (
@@ -122,7 +122,7 @@ const Navbar = () => {
                       className="w-9 h-9 rounded-full object-cover"
                     />
 
-                    {/* Name hidden on mobile */}
+                    
                     <span className="hidden sm:inline text-sm font-medium text-gray-800">
                       {user.name || "User"}
                     </span>
@@ -167,7 +167,7 @@ const Navbar = () => {
                   )}
                 </div>
               ) : (
-                /* Logged out: sign in / sign up (desktop only) */
+               
                 <div className="hidden md:flex items-center gap-2">
                   <Link
                     href="/signin"
@@ -185,7 +185,7 @@ const Navbar = () => {
                 </div>
               )}
 
-              {/* Hamburger (mobile only) */}
+              
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="md:hidden w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center"
@@ -225,7 +225,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      
       {mobileOpen && (
         <div className="md:hidden border-b border-gray-100 bg-white px-3 py-3 space-y-1">
           <Link
@@ -236,7 +236,7 @@ const Navbar = () => {
             হোম
           </Link>
 
-          {/* Category accordion */}
+         
           <button
             onClick={() => setCatOpen(!catOpen)}
             className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-gray-50"
@@ -297,7 +297,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Category bar (desktop only) */}
+      
       <div className="hidden md:block border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-8">
           <nav className="flex items-center gap-5 overflow-x-auto whitespace-nowrap scrollbar-hide py-3">
