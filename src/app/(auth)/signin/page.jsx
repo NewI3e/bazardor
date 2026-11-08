@@ -53,7 +53,7 @@ export default function SigninForm() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f0f5f1] flex flex-col items-center px-4 pt-8">
+    <div className=" bg-[#f0f5f1] flex flex-col items-center px-4 pt-8">
       {/* Header */}
       <div className="text-center mb-5">
         <h1 className="text-2xl font-bold text-gray-900">সাইন ইন</h1>

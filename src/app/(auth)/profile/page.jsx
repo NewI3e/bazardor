@@ -54,7 +54,7 @@ async function ProfileContent() {
 
 export default function Profilepage() {
   return (
-    <main className="min-h-screen bg-[#F0F6F1] px-4 py-12 sm:px-6">
+    <main className=" bg-[#F0F6F1] px-4 py-12 sm:px-6">
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto mb-6 max-w-md">
           <h1 className="text-2xl font-bold text-gray-900">

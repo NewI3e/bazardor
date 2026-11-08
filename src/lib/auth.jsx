@@ -8,10 +8,11 @@ const db = client.db("bazardor");
 export const auth = betterAuth({
   baseURL: process.env.BETTER_AUTH_URL,
 
-  trustedOrigins: [
-    "http://localhost:3000",
-    "https://bazardor-44y47cc2o-404-5d46.vercel.app",
-  ],
+  // trustedOrigins: [
+  //   "http://localhost:3000",
+  //   "https://bazardor-44y47cc2o-404-5d46.vercel.app",
+  //   // https://bazardor-44y47cc2o-404-5d46.vercel.app/
+  // ],
 
   emailAndPassword: {
     enabled: true,

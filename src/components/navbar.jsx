@@ -17,7 +17,7 @@ const Navbar = () => {
   const [categories, setCategories] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // Mobile menu state
+  
   const [mobileOpen, setMobileOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
 
@@ -82,12 +82,12 @@ const Navbar = () => {
           <div className="h-16 flex items-center justify-between gap-2">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-lg bg-green-700 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-lg bg-green-400 flex items-center justify-center">
                 <Image
                   src="/images/logo-icon.png"
                   alt="বাজার দর"
-                  width={28}
-                  height={28}
+                  width={24}
+                  height={24}
                   className="object-contain"
                 />
               </div>

@@ -37,9 +37,9 @@ async function ProductContent({ params }) {
 
   const rows = markets
     .map((m) => ({ ...m, avg: (m.min + m.max) / 2 }))
-    .sort((a, b) => a.avg - b.avg); 
+    .sort((a, b) => a.avg - b.avg);
 
-  const diff = Math.abs(today - yesterday); 
+  const diff = Math.abs(today - yesterday);
   const trend = {
     up: {
       text: `গতকালের তুলনায় আজ দাম বেড়েছে · ${toBn(diff)} টাকা`,
@@ -59,9 +59,9 @@ async function ProductContent({ params }) {
   }[change.dir];
 
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-16 pt-6">
-      {/* ////// */}
-      <nav className="mb-4 flex items-center gap-2 text-xs text-gray-500">
+    <main className="mx-auto max-w-7xl px-3 pb-12 pt-4 sm:px-4 sm:pb-16 sm:pt-6">
+      {/* Breadcrumb */}
+      <nav className="mb-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500">
         <Link href="/" className="hover:text-green-700">হোম</Link>
         <span>›</span>
         <Link href={`/category/${product.category}`} className="hover:text-green-700">
@@ -72,13 +72,13 @@ async function ProductContent({ params }) {
       </nav>
 
       {/* Header card */}
-      <section className="flex items-center justify-between gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-        <div className="flex items-center gap-4">
-          <span className="flex h-16 w-16 items-center justify-center rounded-xl bg-gray-50 text-4xl">
+      <section className="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-5">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-3xl sm:h-16 sm:w-16 sm:text-4xl">
             {image}
           </span>
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">{nameBn}</h1>
+          <div className="min-w-0">
+            <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">{nameBn}</h1>
             <p className="text-xs text-gray-500">
               প্রতি {unitBn[unit]} · {product.categoryNameBn}
             </p>
@@ -86,9 +86,9 @@ async function ProductContent({ params }) {
           </div>
         </div>
 
-        <div className="min-w-27.5 rounded-xl bg-green-50/60 px-4 py-3 text-center">
+        <div className="w-full rounded-xl bg-green-50/60 px-4 py-3 text-center sm:w-auto sm:min-w-27.5">
           <p className="text-[11px] text-gray-500">আজকের দাম</p>
-          <p className="text-3xl font-bold text-gray-900">{toBn(today)}</p>
+          <p className="text-2xl font-bold text-gray-900 sm:text-3xl">{toBn(today)}</p>
           <p className="text-[11px] text-gray-500">টাকা / {unitBn[unit]}</p>
           <p className={`mt-1 text-[11px] font-medium ${trend.color}`}>
             {trend.icon} {toBn(Math.abs(change.pct))}%
@@ -96,9 +96,9 @@ async function ProductContent({ params }) {
         </div>
       </section>
 
-      <section className="mt-5 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+      <section className="mt-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:mt-5 sm:p-5">
         <h2 className="mb-3 font-bold text-gray-900">দামের সারসংক্ষেপ</h2>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div className="rounded-xl border border-gray-100 p-4">
             <p className="text-[11px] text-gray-500">সর্বনিম্ন দাম</p>
             <p className="mt-1 text-xl font-bold text-green-700">
@@ -127,7 +127,38 @@ async function ProductContent({ params }) {
         </div>
 
         <h2 className="mb-3 mt-6 font-bold text-gray-900">বাজারভিত্তিক আজকের দাম</h2>
-        <div className="overflow-x-auto rounded-xl border border-gray-200">
+
+        
+        <ul className="space-y-3 md:hidden">
+          {rows.map((m) => (
+            <li
+              key={m.market}
+              className="rounded-xl border border-gray-200 bg-white p-3 odd:bg-white even:bg-green-50/40"
+            >
+              <div className="mb-2 flex items-baseline justify-between gap-2">
+                <p className="font-medium text-gray-900">{m.market}</p>
+                <p className="shrink-0 text-xs text-gray-500">{m.division}</p>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-center">
+                <div className="rounded-lg bg-gray-50 px-1 py-2">
+                  <p className="text-[10px] text-gray-500">সর্বনিম্ন</p>
+                  <p className="text-sm font-semibold text-gray-800">{toBn(m.min)} টাকা</p>
+                </div>
+                <div className="rounded-lg bg-gray-50 px-1 py-2">
+                  <p className="text-[10px] text-gray-500">সর্বাধিক</p>
+                  <p className="text-sm font-semibold text-gray-800">{toBn(m.max)} টাকা</p>
+                </div>
+                <div className="rounded-lg bg-green-50 px-1 py-2">
+                  <p className="text-[10px] text-gray-500">গড়</p>
+                  <p className="text-sm font-semibold text-green-700">{fmtAvg(m.avg)} টাকা</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        
+        <div className="hidden overflow-x-auto rounded-xl border border-gray-200 md:block">
           <table className="w-full border-collapse text-sm">
             <thead className="bg-gray-50 text-xs text-gray-500">
               <tr>

@@ -4,14 +4,18 @@ import { useState } from "react";
 import { signOut } from "@/lib/auth-clint";
 import toast from "react-hot-toast";
 
+import { useRouter } from "next/navigation";
+
 export default function ProfileForm({ user, updateProfile }) {
   const [name, setName] = useState(user.name || "");
   const [loading, setLoading] = useState(false);
+  const router = useRouter(); 
 
   const handleSignOut = async () => {
     try {
       await signOut();
-      window.location.href = "/signin";
+      router.push("/signin");
+      router.refresh();
     } catch {
       toast.error("সাইন আউট করা যায়নি");
     }
@@ -22,12 +26,16 @@ export default function ProfileForm({ user, updateProfile }) {
       {/* User information */}
       <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-5">
         <div className="flex items-center gap-4">
+          
           {user.image ? (
-            <img
-              src={user.image}
-              alt={user.name || "Profile"}
-              className="h-12 w-12 rounded-xl object-cover"
-            />
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={user.image}
+                alt={user.name || "Profile"}
+                className="h-12 w-12 rounded-xl object-cover"
+              />
+            </>
           ) : (
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-lg font-semibold text-emerald-700">
               {user.name?.charAt(0)?.toUpperCase() || "U"}
@@ -38,9 +46,7 @@ export default function ProfileForm({ user, updateProfile }) {
             <h2 className="truncate text-sm font-semibold text-gray-800">
               {user.name || "ব্যবহারকারী"}
             </h2>
-            <p className="truncate text-xs text-gray-500">
-              {user.email}
-            </p>
+            <p className="truncate text-xs text-gray-500">{user.email}</p>
           </div>
 
           <button
@@ -68,9 +74,7 @@ export default function ProfileForm({ user, updateProfile }) {
         }}
         className="rounded-xl border border-gray-200 bg-white p-5 sm:p-6"
       >
-        <h3 className="mb-6 text-sm font-semibold text-gray-800">
-          তথ্য
-        </h3>
+        <h3 className="mb-6 text-sm font-semibold text-gray-800">তথ্য</h3>
 
         <label
           htmlFor="name"
