@@ -28,19 +28,19 @@ Users can browse products by category, see which items got more expensive or che
 
 ##  Key Features
 
-1. ** Live Price Ticker & Daily Movers**
+1. **Live Price Ticker & Daily Movers**
    An infinitely scrolling marquee shows each product's emoji, name, price and ▲/▼ percentage change. The home page highlights the **top 6 price risers** and **top 6 fallers** of the day, plus a full **"সব পণ্য"** grid.
 
-2. **  Category Browsing with Sorting**
+2. **Category Browsing with Sorting**
    Dedicated category pages (e.g. চাল, সবজি, মাছ) with a **sort dropdown**: Default, Price low → high, Price high → low. Sorting works on the real numeric value, even for Bengali numerals. Skeleton loaders appear while data loads.
 
-3. ** Authentication with Better Auth**
+3. **Authentication with Better Auth**
    Email/password sign-up and sign-in, plus **Google** and **GitHub** social login. Toast notifications give feedback for login, signup, logout and validation errors.
 
-4. ** Protected Product Details Page**
+4. **Protected Product Details Page**
    `/products/[slug]` requires login. It shows the product summary, category tags, unit, **minimum / maximum / average price** and market-wise prices from different bazaars.
 
-5. ** Profile & Update Information**
+5. **Profile & Update Information**
    A My Profile page shows the user's details, and an update page lets users change their name using Better Auth's update-user API.
 
 **Also included:** fully responsive layout (mobile, tablet, desktop), a friendly custom **404 page** with a "হোম পেজে ফিরে যান" button, Bangla date in the navbar and a smooth-scroll hero CTA.
@@ -141,6 +141,6 @@ The project is deployed on **vercel**. Dynamic routes (`/category/[slug]`, `/pro
 
 <div align="center">
 
-Made with ❤️ by **< Abdullah Khan >**
+Made with ❤️ by **Abdullah Khan**
 
 </div>
