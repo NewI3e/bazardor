@@ -141,6 +141,6 @@ The project is deployed on **vercel**. Dynamic routes (`/category/[slug]`, `/pro
 
 <div align="center">
 
-Made with ❤️ by **<Abdullah Khan>**
+Made with ❤️ by **< Abdullah Khan >**
 
 </div>
